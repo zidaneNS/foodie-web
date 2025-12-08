@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Orelega+One&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-orelega: "Orelega One", serif;
+
+    --color-dark-red: #9B1E2A;
+}
+
+html {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    scroll-behavior: smooth;
+}
