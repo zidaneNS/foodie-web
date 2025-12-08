@@ -2,12 +2,12 @@ import Button from "./Button";
 import Hamburger from "../assets/icons/icon-hamburger.svg?react";
 import type { SetStateAction } from "react";
 
-interface NavLink {
+export interface NavLink {
   label: string;
   href: string;
 }
 
-const navLinks: NavLink[] = [
+export const navLinks: NavLink[] = [
   {
     label: 'Home',
     href: '#home'
@@ -38,7 +38,7 @@ export default function Navbar({
   setShowSidebar
 }: NavbarProps) {
   return (
-    <div className="flex justify-between items-center px-6 py-4">
+    <div className="flex justify-between items-center px-6 py-4 sticky top-0 bg-white z-30 shadow-md">
       <h1 className="text-3xl md:text-5xl font-bold">Foo<span className="text-dark-red">die</span></h1>
 
       {/* desktop */}
