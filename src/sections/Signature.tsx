@@ -27,9 +27,9 @@ export default function Signature() {
         <Fork className="size-4 md:size-8" />
         <p className="text-sm md:text-lg">Our Signature</p>
       </div>
-      <div className="flex md:justify-center items-center gap-x-8 md:gap-x-16 max-w-full overflow-x-auto pt-16 md:pt-40 px-6 md:px-0">
+      <div className="flex md:justify-center items-center gap-x-8 md:gap-x-16 max-w-full overflow-x-auto pt-16 md:pt-40 px-8 md:px-0 snap-x snap-mandatory">
         {Array.from({ length: 3 }).map((_, idx) => (
-          <div key={idx} className="flex flex-col gap-y-2 md:gap-y-4 py-4 px-6 rounded-xl bg-black text-white items-center">
+          <div key={idx} className="flex flex-col gap-y-2 md:gap-y-4 py-4 px-6 rounded-xl bg-black text-white items-center snap-center">
             <img src={saladImg} alt="salad" className="-mt-20 md:-mt-40" />
             <div className="flex justify-center items-center gap-x-6">
               <p className="text-sm md:text-base whitespace-nowrap">Salad</p>
