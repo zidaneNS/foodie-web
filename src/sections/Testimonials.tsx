@@ -3,7 +3,7 @@ import profile from "../assets/images/img-profile-pic.png";
 
 export default function Testimonials() {
   return (
-    <div id="testimoni" className="flex flex-col items-center gap-y-4 py-8 md:py-16 px-12 md:px-6 scroll-mt-20">
+    <div id="testimoni" className="flex flex-col items-center gap-y-4 py-8 px-12 md:px-6 scroll-mt-20">
       <div className="flex items-center gap-x-2 md:gap-x-4 px-2 py-3 border-b md:border-b-2 border-dark-red font-orelega text-xl">
         <Group className="size-4 md:size-8" />
         <p className="text-sm md:text-lg">Testimonials</p>
