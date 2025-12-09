@@ -1,9 +1,27 @@
+import { useRef, useState, useEffect } from "react";
 import Group from "../assets/icons/icon-group.svg?react";
 import profile from "../assets/images/img-profile-pic.png";
 
 export default function Testimonials() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting)
+    }, {
+      threshold: 0.3
+    });
+
+    if (ref.current) observer.observe(ref.current)
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    }
+  }, []);
+
   return (
-    <div id="testimoni" className="flex flex-col items-center gap-y-4 py-8 px-12 md:px-6 scroll-mt-20">
+    <div ref={ref} id="testimoni" className={`flex flex-col items-center gap-y-4 py-8 px-12 md:px-6 scroll-mt-20 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'} duration-1000`}>
       <div className="flex items-center gap-x-2 md:gap-x-4 px-2 py-3 border-b md:border-b-2 border-dark-red font-orelega text-xl">
         <Group className="size-4 md:size-8" />
         <p className="text-sm md:text-lg">Testimonials</p>

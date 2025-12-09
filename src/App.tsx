@@ -10,7 +10,7 @@ import Footer from "./sections/Footer";
 export default function App() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-hidden">
       <Sidebar
         show={showSidebar}
         setShow={setShowSidebar}

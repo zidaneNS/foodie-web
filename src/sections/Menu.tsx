@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MenuIcon from "../assets/icons/icon-menu.svg?react";
 import Search from "../assets/icons/icon-search.svg?react";
 import ChevronLeft from "../assets/icons/icon-double-chevron-left.svg?react";
@@ -29,11 +29,28 @@ export default function Menu() {
   const [maxPages, setMaxPages] = useState<number>(1);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [displayData, setDisplayData] = useState<Item[]>(data.slice(0, MAX_ITEM));
+  const [visible, setVisible] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     console.log('search', search);
     console.log('debounce', debouncedSearch);
   }, [search, debouncedSearch]);
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting)
+    }, {
+      threshold: 0.3
+    });
+
+    if (ref.current) observer.observe(ref.current)
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    }
+  }, []);
 
   useEffect(() => {
     let filtered = items;
@@ -72,7 +89,7 @@ export default function Menu() {
   }
 
   return (
-    <div id="menu" className="flex flex-col items-center gap-y-4 px-6 scroll-mt-20">
+    <div ref={ref} id="menu" className={`flex flex-col items-center gap-y-4 px-6 scroll-mt-20 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'} duration-1000`}>
       <div className="flex items-center gap-x-2 md:gap-x-4 px-2 py-3 border-b md:border-b-2 border-dark-red font-orelega text-xl">
         <p className="text-sm md:text-lg">Menu</p>
         <MenuIcon className="size-4 md:size-8" />

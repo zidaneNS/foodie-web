@@ -9,23 +9,23 @@ import Button from "../components/Button";
 
 export default function Footer() {
   return (
-    <div className="flex flex-col md:flex-row gap-y-4 md:justify-between px-12 py-8 bg-black text-white">
-      <div className="flex flex-col md:justify-between gap-y-4">
-        <h1 className="text-xl md:text-5xl font-bold">Foo<span className="text-dark-red">die</span></h1>
+    <div id="contact" className="flex flex-col md:flex-row gap-y-12 md:justify-between px-6 md:px-12 py-8 bg-black text-white">
+      <div className="flex flex-col md:justify-between gap-y-8">
+        <h1 className="text-3xl md:text-5xl font-bold">Foo<span className="text-dark-red">die</span></h1>
         <div className="flex flex-col gap-y-4">
           <div className="flex gap-x-4 items-center">
             <div className="flex gap-x-3 items-center">
               <Message />
-              <p className="text-sm md:text-base">foodie@example.com</p>
+              <p className="text-xs md:text-sm">foodie@example.com</p>
             </div>
             <div className="flex gap-x-3 items-center">
               <Phone />
-              <p className="text-sm md:text-base">(+63) 123 456 789</p>
+              <p className="text-xs md:text-sm">(+63) 123 456 789</p>
             </div>
           </div>
           <div className="flex gap-x-3 items-center">
             <Pin />
-            <p className="text-sm md:text-base">St Sumatera 48, East Java</p>
+            <p className="text-xs md:text-sm">St Sumatera 48, East Java</p>
           </div>
         </div>
         <Button className="w-fit">Order Now</Button>
@@ -89,6 +89,7 @@ export default function Footer() {
               <p>09.00 - 21.00 WIB</p>
             </div>
           </div>
+          <p className="text-xs md:text-sm">copyright © 2025</p>
         </div>
       </div>
     </div>
