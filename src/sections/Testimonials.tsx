@@ -21,7 +21,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div ref={ref} id="testimoni" className={`flex flex-col items-center gap-y-4 py-8 px-12 md:px-6 scroll-mt-20 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'} duration-1000`}>
+    <div ref={ref} id="testimoni" className={`flex flex-col items-center gap-y-4 py-8 px-12 md:px-6 scroll-mt-8 md:scroll-mt-20 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'} duration-1000`}>
       <div className="flex items-center gap-x-2 md:gap-x-4 px-2 py-3 border-b md:border-b-2 border-dark-red font-orelega text-xl">
         <Group className="size-4 md:size-8" />
         <p className="text-sm md:text-lg">Testimonials</p>

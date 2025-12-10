@@ -33,12 +33,6 @@ export default function Menu() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log('search', search);
-    console.log('debounce', debouncedSearch);
-  }, [search, debouncedSearch]);
-
-
-  useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setVisible(entry.isIntersecting)
     }, {
@@ -89,21 +83,21 @@ export default function Menu() {
   }
 
   return (
-    <div ref={ref} id="menu" className={`flex flex-col items-center gap-y-4 px-6 scroll-mt-20 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'} duration-1000`}>
+    <div ref={ref} id="menu" className={`flex flex-col items-center gap-y-4 px-6 scroll-mt-16 md:scroll-mt-20`}>
       <div className="flex items-center gap-x-2 md:gap-x-4 px-2 py-3 border-b md:border-b-2 border-dark-red font-orelega text-xl">
         <p className="text-sm md:text-lg">Menu</p>
         <MenuIcon className="size-4 md:size-8" />
       </div>
-      <div className="flex gap-x-4 items-center py-2 border-b border-slate-400 w-full md:w-1/3">
+      <div className={`flex gap-x-4 items-center py-2 border-b border-slate-400 w-full md:w-1/3 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'} duration-1000`}>
         <Search className="size-4 md:size-6" />
         <input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} value={search} className="outline-none text-sm md:text-base flex-1" />
       </div>
-      <div className="flex items-center justify-center gap-x-8 md:gap-x-16 py-6">
+      <div className={`flex items-center justify-center gap-x-8 md:gap-x-16 py-6 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'} duration-1000`}>
         {categories.map((category, idx) => (
           <p key={idx} onClick={() => setSelectedCategory(category)} className={`text-xs md:text-base cursor-pointer hover:text-dark-red ${selectedCategory === category ? 'text-dark-red' : 'text-black'}`}>{capitalizeFirstLetter(category)}</p>
         ))}
       </div>
-      <div className="flex gap-4 md:gap-16 items-center justify-center flex-wrap">
+      <div className={`flex gap-4 md:gap-16 items-center justify-center flex-wrap ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'} duration-1000`}>
         {data.length > 0 ? displayData.map((item, idx) => (
           <div key={idx} className="flex flex-col gap-y-2 md:gap-y-4 py-3 md:py-4 px-4 md:px-6 rounded-md shadow-xl items-center">
             <img src={item.imgSrc} alt="bread" className="size-28 md:size-48" />

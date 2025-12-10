@@ -6,11 +6,12 @@ import Signature from "./sections/Signature";
 import Menu from "./sections/Menu";
 import Testimonials from "./sections/Testimonials";
 import Footer from "./sections/Footer";
+import About from "./sections/About";
 
 export default function App() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden">
+    <div id="home" className="min-h-screen flex flex-col">
       <Sidebar
         show={showSidebar}
         setShow={setShowSidebar}
@@ -18,11 +19,14 @@ export default function App() {
       <Navbar
         setShowSidebar={setShowSidebar}
       />
-      <Hero />
-      <Signature />
-      <Menu />
-      <Testimonials />
-      <Footer />
+      <div className="overflow-x-hidden">
+        <Hero />
+        <Signature />
+        <Menu />
+        <About />
+        <Testimonials />
+        <Footer />
+      </div>
     </div>
   )
 }
