@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type SetStateAction } from "react";
 import MenuIcon from "../assets/icons/icon-menu.svg?react";
 import Search from "../assets/icons/icon-search.svg?react";
 import ChevronLeft from "../assets/icons/icon-double-chevron-left.svg?react";
@@ -6,22 +6,19 @@ import ChevronRight from "../assets/icons/icon-double-chevron-right.svg?react";
 import { capitalizeFirstLetter, currency } from "../helpers/text";
 import Button from "../components/Button";
 import { useDebounce } from "use-debounce";
-import { items } from "../mockup/item";
-
-export type Category = 'all' | 'breakfast' | 'lunch' | 'drink' | 'dessert';
-
-const categories: Category[] = ['all', 'breakfast', 'lunch', 'drink', 'dessert'];
-
-export interface Item {
-  name: string;
-  price: number;
-  category: Category;
-  imgSrc: string;
-}
+import { categories, items, type Category, type Item } from "../mockup/item";
 
 const MAX_ITEM = 6;
 
-export default function Menu() {
+interface MenuProps {
+  setSelectedItems: React.Dispatch<SetStateAction<Item[]>>;
+  selectedItems: Item[]
+}
+
+export default function Menu({
+  setSelectedItems,
+  selectedItems
+}: MenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
   const [search, setSearch] = useState<string>('');
   const [data, setData] = useState<Item[]>(items);
@@ -82,6 +79,13 @@ export default function Menu() {
     if (currentPage > 1) setCurrentPage(prev => prev - 1);
   }
 
+  function handleAddItem(item: Item) {
+    setSelectedItems([
+      ...selectedItems,
+      item
+    ])
+  }
+
   return (
     <div ref={ref} id="menu" className={`flex flex-col items-center gap-y-4 px-6 scroll-mt-16 md:scroll-mt-20`}>
       <div className="flex items-center gap-x-2 md:gap-x-4 px-2 py-3 border-b md:border-b-2 border-dark-red font-orelega text-xl">
@@ -103,7 +107,8 @@ export default function Menu() {
             <img src={item.imgSrc} alt="bread" className="size-28 md:size-48" />
             <p className="text-xs md:text-sm">{item.name}</p>
             <p className="text-sm md:text-base">IDR {currency(item.price)}/-</p>
-            <Button className="w-fit">Add to Cart</Button>
+            <Button onClick={() => handleAddItem(item)} className="w-fit">Add to Cart</Button>
+            {selectedItems.filter(selectedItem => selectedItem.name === item.name).length > 0 && <p className="text-[0.5rem] md:text-xs">available in cart</p>}
           </div>
         )) : <p className="text-sm md:text-base text-slate-400">Data is empty</p>}
       </div>

@@ -31,7 +31,7 @@ export default function Sidebar({
     <div ref={sidebarRef} className={`fixed z-50 h-screen ${show ? 'right-0' : '-right-full'} w-64 md:hidden flex flex-col gap-y-4 px-4 py-8 bg-linear-to-b from-red-950 to-dark-red duration-300 text-white`}>
       <button onClick={() => setShow(false)} className="cursor-pointer w-fit">x</button>
       {navLinks.map((navLink, idx) => (
-        <a key={idx} href={navLink.href} className={`text-center border-b border-white text-sm py-2`}>{navLink.label}</a>
+        <a onClick={() => setShow(false)} key={idx} href={navLink.href} className={`text-center border-b border-white text-sm py-2`}>{navLink.label}</a>
       ))}
       <Button>Order Now</Button>
     </div>

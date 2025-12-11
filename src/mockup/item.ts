@@ -2,8 +2,16 @@ import bread from "../assets/images/img-bread.png";
 import sausage from "../assets/images/img-sausage.png";
 import pizza from "../assets/images/img-pizza.png";
 import salad from "../assets/images/img-salad.png";
-import type { Item } from "../sections/Menu";
 
+export type Category = 'all' | 'breakfast' | 'lunch' | 'drink' | 'dessert';
+
+export const categories: Category[] = ['all', 'breakfast', 'lunch', 'drink', 'dessert'];
+export interface Item {
+  name: string;
+  price: number;
+  category: Category;
+  imgSrc: string;
+}
 
 export const items: Item[] = [
   {
