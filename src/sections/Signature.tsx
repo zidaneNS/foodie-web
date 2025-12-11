@@ -35,7 +35,7 @@ export default function Signature() {
               <p className="text-sm md:text-base whitespace-nowrap">Salad</p>
               <p className="text-sm md:text-base whitespace-nowrap">IDR 25,000/-</p>
             </div>
-            <Button onClick={() => alert('test')} className="w-fit">Add to Cart</Button>
+            <Button className="w-fit">Add to Cart</Button>
           </div>
         ))}
       </div>
